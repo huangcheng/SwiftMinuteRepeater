@@ -6,6 +6,15 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		4B1E97262EFE7C390010BB32 /* KeyboardShortcuts in Frameworks */ = {isa = PBXBuildFile; productRef = 4B1E97252EFE7C390010BB32 /* KeyboardShortcuts */; };
+		4B1E97302EFE8A100010BB32 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4B1E972A2EFE8A100010BB32 /* Assets.xcassets */; };
+		4B1E97312EFE8A100010BB32 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B1E972B2EFE8A100010BB32 /* Constants.swift */; };
+		4B1E97322EFE8A100010BB32 /* MinuteRepeaterApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B1E972C2EFE8A100010BB32 /* MinuteRepeaterApp.swift */; };
+		4B1E97332EFE8A100010BB32 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B1E972D2EFE8A100010BB32 /* SettingsView.swift */; };
+		4B1E97342EFE8A100010BB32 /* WaveRider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B1E972E2EFE8A100010BB32 /* WaveRider.swift */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXContainerItemProxy section */
 		4B51EDA92EFBD03E00EFEA63 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -24,17 +33,17 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		4B1E972A2EFE8A100010BB32 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		4B1E972B2EFE8A100010BB32 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		4B1E972C2EFE8A100010BB32 /* MinuteRepeaterApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MinuteRepeaterApp.swift; sourceTree = "<group>"; };
+		4B1E972D2EFE8A100010BB32 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		4B1E972E2EFE8A100010BB32 /* WaveRider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaveRider.swift; sourceTree = "<group>"; };
 		4B51ED9B2EFBD03C00EFEA63 /* MinuteRepeater.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MinuteRepeater.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4B51EDA82EFBD03E00EFEA63 /* MinuteRepeaterTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MinuteRepeaterTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		4B51EDB22EFBD03E00EFEA63 /* MinuteRepeaterUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MinuteRepeaterUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
-		4B51ED9D2EFBD03C00EFEA63 /* MinuteRepeater */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			path = MinuteRepeater;
-			sourceTree = "<group>";
-		};
 		4B51EDAB2EFBD03E00EFEA63 /* MinuteRepeaterTests */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			path = MinuteRepeaterTests;
@@ -52,6 +61,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4B1E97262EFE7C390010BB32 /* KeyboardShortcuts in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -72,10 +82,30 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4B1E972F2EFE8A100010BB32 /* MinuteRepeater */ = {
+			isa = PBXGroup;
+			children = (
+				4B1E97352EFE8A1E0010BB32 /* Views */,
+				4B1E972A2EFE8A100010BB32 /* Assets.xcassets */,
+				4B1E972B2EFE8A100010BB32 /* Constants.swift */,
+				4B1E972C2EFE8A100010BB32 /* MinuteRepeaterApp.swift */,
+				4B1E972E2EFE8A100010BB32 /* WaveRider.swift */,
+			);
+			path = MinuteRepeater;
+			sourceTree = "<group>";
+		};
+		4B1E97352EFE8A1E0010BB32 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				4B1E972D2EFE8A100010BB32 /* SettingsView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		4B51ED922EFBD03C00EFEA63 = {
 			isa = PBXGroup;
 			children = (
-				4B51ED9D2EFBD03C00EFEA63 /* MinuteRepeater */,
+				4B1E972F2EFE8A100010BB32 /* MinuteRepeater */,
 				4B51EDAB2EFBD03E00EFEA63 /* MinuteRepeaterTests */,
 				4B51EDB52EFBD03E00EFEA63 /* MinuteRepeaterUITests */,
 				4B51ED9C2EFBD03C00EFEA63 /* Products */,
@@ -107,11 +137,9 @@
 			);
 			dependencies = (
 			);
-			fileSystemSynchronizedGroups = (
-				4B51ED9D2EFBD03C00EFEA63 /* MinuteRepeater */,
-			);
 			name = MinuteRepeater;
 			packageProductDependencies = (
+				4B1E97252EFE7C390010BB32 /* KeyboardShortcuts */,
 			);
 			productName = MinuteRepeater;
 			productReference = 4B51ED9B2EFBD03C00EFEA63 /* MinuteRepeater.app */;
@@ -195,6 +223,9 @@
 			);
 			mainGroup = 4B51ED922EFBD03C00EFEA63;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				4B1E97242EFE7C390010BB32 /* XCRemoteSwiftPackageReference "KeyboardShortcuts" */,
+			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 4B51ED9C2EFBD03C00EFEA63 /* Products */;
 			projectDirPath = "";
@@ -212,6 +243,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4B1E97302EFE8A100010BB32 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -236,6 +268,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4B1E97312EFE8A100010BB32 /* Constants.swift in Sources */,
+				4B1E97322EFE8A100010BB32 /* MinuteRepeaterApp.swift in Sources */,
+				4B1E97332EFE8A100010BB32 /* SettingsView.swift in Sources */,
+				4B1E97342EFE8A100010BB32 /* WaveRider.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -404,7 +440,9 @@
 				ENABLE_PREVIEWS = YES;
 				ENABLE_USER_SELECTED_FILES = readonly;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
+				INFOPLIST_KEY_LSUIElement = YES;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "© HUANG Cheng";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
@@ -437,7 +475,9 @@
 				ENABLE_PREVIEWS = YES;
 				ENABLE_USER_SELECTED_FILES = readonly;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
+				INFOPLIST_KEY_LSUIElement = YES;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "© HUANG Cheng";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
@@ -575,6 +615,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		4B1E97242EFE7C390010BB32 /* XCRemoteSwiftPackageReference "KeyboardShortcuts" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/sindresorhus/KeyboardShortcuts";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.4.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		4B1E97252EFE7C390010BB32 /* KeyboardShortcuts */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 4B1E97242EFE7C390010BB32 /* XCRemoteSwiftPackageReference "KeyboardShortcuts" */;
+			productName = KeyboardShortcuts;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 4B51ED932EFBD03C00EFEA63 /* Project object */;
 }

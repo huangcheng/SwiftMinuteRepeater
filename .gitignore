@@ -1,0 +1,27 @@
+# Xcode
+.DS_Store
+*.xcodeproj/xcuserdata/
+*.xcworkspace/
+*.xcworkspace/xcuserdata/
+*.xcworkspace/contents.xcworkspacedata
+.swiftpm/xcode/package.xcworkspace/xcuserdata/
+.swiftpm/xcode/xcshareddata/
+.swiftpm/xcode/project.xcworkspace/
+
+# Build artifacts
+build/
+DerivedData/
+
+# App packaging
+*.ipa
+*.dSYM.zip
+*.dSYM
+
+# Swift Package Manager
+.build/
+# Packages/ # Only uncomment if you want to exclude dependencies
+
+# Playgrounds
+timeline.xctimeline
+playground.xcworkspace
+
