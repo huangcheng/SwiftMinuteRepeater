@@ -6,12 +6,12 @@
       "scale" : "1x"
     },
     {
-      "filename" : "tray 1.png",
+      "filename" : "tray_2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "tray 2.png",
+      "filename" : "tray_3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

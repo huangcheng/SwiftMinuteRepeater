@@ -9,15 +9,8 @@ struct MinuteRepeaterApp: App {
     
     @State private var appState = AppState()
     
-    private var trayIcon: NSImage? {
-        let image = NSImage(named: "TrayIcon")
-        image?.isTemplate = true
-        
-        return image
-    }
-    
     var body: some Scene {
-        MenuBarExtra {
+        MenuBarExtra("Minute Repeater", image: "TrayIcon") {
             Button("Settings") {
                 openWindow(id: "settings")
             }
@@ -28,12 +21,6 @@ struct MinuteRepeaterApp: App {
             
             Button("Quit") {
                 NSApplication.shared.terminate(nil)
-            }
-        } label: {
-            if let trayIcon = trayIcon {
-                Image(nsImage: trayIcon)
-            } else {
-                Image(systemName: "clock")
             }
         }
         
