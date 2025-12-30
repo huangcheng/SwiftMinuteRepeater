@@ -9,6 +9,10 @@ struct MinuteRepeaterApp: App {
     
     @State private var appState = AppState()
     
+    init() {
+        checkInstance()
+    }
+    
     var body: some Scene {
         MenuBarExtra("Minute Repeater", image: "TrayIcon") {
             Button("Settings") {
@@ -34,6 +38,14 @@ struct MinuteRepeaterApp: App {
                 )
         }
         .windowResizability(.contentSize)
+    }
+    
+    private func checkInstance() {
+        let runningInstances = NSRunningApplication.runningApplications(withBundleIdentifier: Bundle.main.bundleIdentifier!)
+        
+        if runningInstances.count > 1 {
+            NSApp.terminate(nil)
+        }
     }
 }
 
