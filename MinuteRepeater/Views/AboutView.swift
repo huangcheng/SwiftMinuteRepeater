@@ -32,3 +32,7 @@ struct AboutView: View {
         Spacer()
     }
 }
+
+#Preview {
+    AboutView()
+}

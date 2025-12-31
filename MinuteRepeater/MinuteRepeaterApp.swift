@@ -1,15 +1,19 @@
 import SwiftUI
 import AppKit
 import AVFoundation
+import Synchronization
 import KeyboardShortcuts
+import Combine
 
 @main
 struct MinuteRepeaterApp: App {
     @Environment(\.openWindow) var openWindow
 
     @State private var appState = AppState()
+    @AppStorage("chimingMode") var chimingMode: ChimingMode = .off
+    @State private var lastChimedMinute: Int?
 
-    @AppStorage("appLanguage") private var appLanguage: String = "zh-Hans"
+    private let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
 
     init() {
         checkInstance()
@@ -35,10 +39,37 @@ struct MinuteRepeaterApp: App {
                 NSApplication.shared.terminate(nil)
             }
             .keyboardShortcut("q", modifiers: .command)
+            .onReceive(timer) { date in
+                let minute = Calendar.current.component(.minute, from: date)
+                let hour = Calendar.current.component(.hour, from: date)
+                let shouldChime: Bool
+
+                switch chimingMode {
+                    case .minutely:
+                        shouldChime = true
+                    case .quarterly:
+                        shouldChime = minute % 15 == 0
+                    case .halfHourly:
+                        shouldChime = minute == 0 || minute == 30
+                    case .hourly:
+                        shouldChime = minute == 0
+                    default:
+                        shouldChime = false
+                }
+                if shouldChime {
+                    let currentKey = hour * 60 + minute
+                    if lastChimedMinute != currentKey {
+                        appState.chiming()
+                        lastChimedMinute = currentKey
+                    }
+                } else {
+                    lastChimedMinute = nil
+                }
+            }
         }
 
         Window(String(localized: "Settings", comment: "Settings Window"), id: "settings") {
-            SettingsView()
+            SettingsView(chimingMode: $chimingMode)
                 .frame(
                     minWidth: 320,
                     maxWidth: 320,
@@ -80,6 +111,8 @@ final class AppState {
     private var quarter: Data = NSDataAsset(name: "Audio/quarter")!.data
     private var minute: Data = NSDataAsset(name: "Audio/minute")!.data
 
+    private var cachedWaveData: [String: Data] = [:]
+
     init() {
         KeyboardShortcuts.onKeyUp(for: .triggerChiming) { [self] in
             chiming()
@@ -108,6 +141,12 @@ final class AppState {
     private func getWaveDataForTime() -> Data {
         let (hourCount, quarterCount, minuteCount) = convertCurrentTimeToHQM()
 
+        let cacheKey = "\(hourCount)-\(quarterCount)-\(minuteCount)"
+
+        if let cachedData = cachedWaveData[cacheKey] {
+            return cachedData
+        }
+
         let rider = WaveRider()
 
         for _ in 0..<hourCount {
@@ -122,11 +161,13 @@ final class AppState {
             rider.append(waveData: minute)
         }
 
-        return rider.getData()
+        cachedWaveData[cacheKey] = rider.getData()
+
+        return cachedWaveData[cacheKey]!
     }
 
     func chiming() {
-        if audioDelegate.isPlaying {
+        if audioDelegate.isPlaying.load(ordering: .relaxed) {
             return
         }
 
@@ -136,16 +177,16 @@ final class AppState {
 
         audioPlayer?.delegate = audioDelegate
 
-        audioDelegate.isPlaying = true
+        audioDelegate.isPlaying.store(true, ordering: .relaxed)
 
         audioPlayer?.play()
     }
 }
 
 final class AppAudioDelegate: NSObject, AVAudioPlayerDelegate {
-    var isPlaying: Bool = false
+    let isPlaying = Atomic<Bool>(false)
 
     func audioPlayerDidFinishPlaying(_ player: AVAudioPlayer, successfully flag: Bool) {
-        isPlaying = false
+        isPlaying.store(false, ordering: .relaxed)
     }
 }

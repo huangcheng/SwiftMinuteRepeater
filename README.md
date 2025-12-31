@@ -137,7 +137,7 @@ Contributions are welcome! Please feel free to submit a Pull Request.
 
 ## License
 
-[Your License Here]
+The MIT License (MIT)
 
 ## Acknowledgments
 
