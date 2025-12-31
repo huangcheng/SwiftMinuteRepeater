@@ -13,6 +13,7 @@
 		4B1E97322EFE8A100010BB32 /* MinuteRepeaterApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B1E972C2EFE8A100010BB32 /* MinuteRepeaterApp.swift */; };
 		4B1E97332EFE8A100010BB32 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B1E972D2EFE8A100010BB32 /* SettingsView.swift */; };
 		4B1E97342EFE8A100010BB32 /* WaveRider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B1E972E2EFE8A100010BB32 /* WaveRider.swift */; };
+		4B25A85A2F04BA5600434EFD /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 4B25A8592F04BA5600434EFD /* Localizable.xcstrings */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,6 +39,7 @@
 		4B1E972C2EFE8A100010BB32 /* MinuteRepeaterApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MinuteRepeaterApp.swift; sourceTree = "<group>"; };
 		4B1E972D2EFE8A100010BB32 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		4B1E972E2EFE8A100010BB32 /* WaveRider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaveRider.swift; sourceTree = "<group>"; };
+		4B25A8592F04BA5600434EFD /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
 		4B51ED9B2EFBD03C00EFEA63 /* MinuteRepeater.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MinuteRepeater.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4B51EDA82EFBD03E00EFEA63 /* MinuteRepeaterTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MinuteRepeaterTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		4B51EDB22EFBD03E00EFEA63 /* MinuteRepeaterUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MinuteRepeaterUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -90,6 +92,7 @@
 				4B1E972B2EFE8A100010BB32 /* Constants.swift */,
 				4B1E972C2EFE8A100010BB32 /* MinuteRepeaterApp.swift */,
 				4B1E972E2EFE8A100010BB32 /* WaveRider.swift */,
+				4B25A8592F04BA5600434EFD /* Localizable.xcstrings */,
 			);
 			path = MinuteRepeater;
 			sourceTree = "<group>";
@@ -220,6 +223,7 @@
 			knownRegions = (
 				en,
 				Base,
+				"zh-Hans",
 			);
 			mainGroup = 4B51ED922EFBD03C00EFEA63;
 			minimizedProjectReferenceProxies = 1;
@@ -243,6 +247,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4B25A85A2F04BA5600434EFD /* Localizable.xcstrings in Resources */,
 				4B1E97302EFE8A100010BB32 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -365,6 +370,7 @@
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = macosx;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
@@ -422,6 +428,7 @@
 				MTL_FAST_MATH = YES;
 				SDKROOT = macosx;
 				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_EMIT_LOC_STRINGS = YES;
 			};
 			name = Release;
 		};

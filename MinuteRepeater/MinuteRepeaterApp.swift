@@ -9,26 +9,31 @@ struct MinuteRepeaterApp: App {
     
     @State private var appState = AppState()
     
+    @AppStorage("appLanguage") private var appLanguage: String = "zh-Hans"
+    
     init() {
         checkInstance()
     }
     
     var body: some Scene {
-        MenuBarExtra("Minute Repeater", image: "TrayIcon") {
-            Button("Settings") {
+        MenuBarExtra(String(localized: "Minute Repeater", comment: "App Name"), image: "TrayIcon") {
+            Button(String(localized: "Settings", comment: "Settings Menu Item"), systemImage: "gearshape") {
                 openWindow(id: "settings")
             }
+            .keyboardShortcut(",", modifiers: .command)
             
-            Button("About") {
+            Button(String(localized: "About", comment: "About Menu Item"), systemImage: "info.circle") {
                 appState.chiming()
             }
+            .keyboardShortcut("a", modifiers: .command)
             
-            Button("Quit") {
+            Button(String(localized: "Quit", comment: "Quit Menu Item"), systemImage: "xmark.circle") {
                 NSApplication.shared.terminate(nil)
             }
+            .keyboardShortcut("q", modifiers: .command)
         }
         
-        Window("Settings", id: "settings") {
+        Window(String(localized: "Settings", comment: "Settings Window"), id: "settings") {
             SettingsView()
                 .frame(
                     minWidth: 320,
