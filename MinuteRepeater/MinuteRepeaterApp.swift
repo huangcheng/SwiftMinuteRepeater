@@ -22,10 +22,14 @@ struct MinuteRepeaterApp: App {
             }
             .keyboardShortcut(",", modifiers: .command)
 
+            Divider()
+
             Button(String(localized: "About", comment: "About Menu Item"), systemImage: "info.circle") {
-                appState.chiming()
+                openWindow(id: "about")
             }
             .keyboardShortcut("a", modifiers: .command)
+
+            Divider()
 
             Button(String(localized: "Quit", comment: "Quit Menu Item"), systemImage: "xmark.circle") {
                 NSApplication.shared.terminate(nil)
@@ -43,6 +47,18 @@ struct MinuteRepeaterApp: App {
                 )
         }
         .windowResizability(.contentSize)
+
+        Window(String(localized: "About", comment: "About Window"), id: "about") {
+            AboutView()
+                .frame(
+                    minWidth: 260,
+                    maxWidth: 260,
+                    minHeight: 160,
+                    maxHeight: 160
+                )
+        }
+        .windowResizability(.contentSize)
+
     }
 
     private func checkInstance() {

@@ -2,7 +2,7 @@
   "sourceLanguage" : "en",
   "strings" : {
     "About" : {
-      "comment" : "About Menu Item",
+      "comment" : "About Menu Item\nAbout Window",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -31,6 +31,22 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "响铃快捷键："
+          }
+        }
+      }
+    },
+    "Copyright © HUANG Cheng" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Copyright © HUANG Cheng"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "版权所有 © HUANG Cheng"
           }
         }
       }
@@ -98,6 +114,22 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "设置"
+          }
+        }
+      }
+    },
+    "Version %@" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Version %@"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "版本 %@"
           }
         }
       }
