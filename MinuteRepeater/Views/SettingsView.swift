@@ -4,7 +4,7 @@ import ServiceManagement
 
 struct SettingsView: View {
     @AppStorage("autoStart") var autoStart: Bool = false
-    
+
     var body: some View {
         Spacer()
         HStack {
@@ -20,7 +20,7 @@ struct SettingsView: View {
                         try? SMAppService.mainApp.unregister()
                     }
                 }
-                
+
                 KeyboardShortcuts.Recorder("Chiming Shortcut:", name: .triggerChiming)
             }
             .toggleStyle(.switch)

@@ -1,4 +1,4 @@
-    //
+//
     //  WaveRider.swift
     //  MinuteRepeater
     //
@@ -28,13 +28,13 @@ class WaveRider {
     private var size: UInt32
     private var header: WaveHeader?
     private var audioData: [UInt8] = []
-    
+
     init() {
         data = Data()
         size = 0
         header = nil
     }
-    
+
     func append(waveData: Data) {
         if waveData.count < 44 { return }
         let riff = waveData.subdata(in: 0..<4).withUnsafeBytes { $0.load(as: UInt32.self) }.littleEndian
@@ -42,7 +42,7 @@ class WaveRider {
         let fileSize = waveData.subdata(in: 4..<8).withUnsafeBytes { $0.load(as: UInt32.self) }.littleEndian
         let wave = waveData.subdata(in: 8..<12).withUnsafeBytes { $0.load(as: UInt32.self) }.littleEndian
         if wave != 0x45564157 { return } // "WAVE"
-        
+
         var position: Int = 12
         var fmtParsed = false
         var dataParsed = false
@@ -55,7 +55,7 @@ class WaveRider {
         var parsedBitsPerSample: UInt16 = 0
         var parsedDataSize: UInt32 = 0
         var parsedAudioData: [UInt8] = []
-        
+
         while position + 8 <= waveData.count {
             let chunkId = waveData.subdata(in: position..<position+4).withUnsafeBytes { $0.load(as: UInt32.self) }.littleEndian
             let chunkSize = waveData.subdata(in: position+4..<position+8).withUnsafeBytes { $0.load(as: UInt32.self) }.littleEndian
@@ -79,9 +79,9 @@ class WaveRider {
             position += 8 + Int(chunkSize)
             if position % 2 == 1 { position += 1 } // align to even
         }
-        
+
         if !fmtParsed || !dataParsed { return }
-        
+
         let parsedHeader = WaveHeader(riff: riff, fileSize: fileSize, wave: wave, fmt: 0x20746D66, fmtSize: parsedFmtSize, formatTag: parsedFormatTag, channels: parsedChannels, samplesPerSec: parsedSamplesPerSec, avgBytesPerSec: parsedAvgBytesPerSec, blockAlign: parsedBlockAlign, bitsPerSample: parsedBitsPerSample, data: 0x61746164, dataSize: parsedDataSize)
         let otherSize = parsedDataSize
         if header == nil {
@@ -101,7 +101,7 @@ class WaveRider {
         }
         updateData()
     }
-    
+
     private func updateData() {
         guard let header = header else { return }
         var headerBytes = [UInt8]()
@@ -120,7 +120,7 @@ class WaveRider {
         headerBytes.append(contentsOf: withUnsafeBytes(of: header.dataSize.littleEndian) { Array($0) })
         data = Data(headerBytes + audioData)
     }
-    
+
     func getData() -> Data {
         return Data(data)
     }
